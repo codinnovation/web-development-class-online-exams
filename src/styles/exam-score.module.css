@@ -1,0 +1,26 @@
+.examScoreContainer {
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.examScoreContent {
+   background-color: #eeee;
+   width: 40%;
+   height: 55%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+}
+
+.examScoreContent h1{
+   font-size: 2em;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+.examScoreContent p{
+   font-size: 5em;
+   font-family: Arial, Helvetica, sans-serif;
+}

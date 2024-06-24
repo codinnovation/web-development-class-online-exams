@@ -8,15 +8,37 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import usePageVisibility from "@/pages/usePageVisibility";
 import { db } from "../../../../firebase.config";
-import { ref, get } from "firebase/database";
+import { ref, get, set, push } from "firebase/database";
 
-function Index() {
+function Index({  }) {
   const [openMenu, setopenMenu] = useState(false);
   const [examsQuestions, setExamsQuestions] = useState([]);
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [currentPage, setCurrentPage] = useState(0);
   const questionsPerPage = 2;
   const router = useRouter();
+  const [user, setUser] = useState(null);
+
+
+  useEffect(() => {
+   const fetchUser = async () => {
+     try {
+       const res = await fetch("/api/user");
+       if (res.ok) {
+         const data = await res.json();
+         setUser(data.user);
+       } else {
+         setUser(null);
+       }
+     } catch (error) {
+       console.error("Error fetching user data:", error);
+       setUser(null);
+     } finally {
+     }
+   };
+
+   fetchUser();
+ }, []);
 
   const handleLogout = async () => {
     try {
@@ -90,6 +112,41 @@ function Index() {
     }));
   };
 
+  const calculateScore = () => {
+    let score = 0;
+    examsQuestions.forEach((question) => {
+      if (selectedAnswers[question.key] === question.correctAnswer) {
+        score += 1;
+      }
+    });
+    return score;
+  };
+
+  const handleSubmit = async () => {
+    const score = calculateScore();
+    const total = examsQuestions.length;
+
+    try {
+      const resultRef = push(ref(db, "examResults"));
+      const resultKey = resultRef.key;
+      await set(resultRef, {
+        email: user?.email || "anonymous",
+        score: score,
+        total: total,
+      });
+
+      toast.success("Exam submitted successfully!");
+
+      router.push({
+        pathname: "/exam-score",
+        query: { score, total },
+      });
+    } catch (error) {
+      console.error("Error submitting exam results:", error);
+      toast.error("Error occurred while submitting the exam.");
+    }
+  };
+
   const startIndex = currentPage * questionsPerPage;
   const endIndex = startIndex + questionsPerPage;
   const currentQuestions = examsQuestions.slice(startIndex, endIndex);
@@ -104,7 +161,7 @@ function Index() {
         <div className={styles.examPgaeHeader}>
           <div className={styles.headerOne}>
             <h1>Welcome</h1>
-            <h1>Kwabena Asumadu</h1>
+            <h1>{user?.name || "Student"}</h1>
           </div>
 
           <div className={styles.headerTwo}>
@@ -165,14 +222,14 @@ function Index() {
           >
             Next
           </button>
-          <button>Submit</button>
+          <button onClick={handleSubmit}>Submit</button>
         </div>
       </div>
 
       {openMenu && (
         <>
           <div className={styles.menuContainer}>
-            <h1>Asumadu Kwabrna Asima</h1>
+            <h1>{user?.name || "Student"}</h1>
           </div>
         </>
       )}
@@ -197,6 +254,14 @@ export const getServerSideProps = withSession(async function ({ req, res }) {
   if (user) {
     req.session.set("user", user);
     await req.session.save();
+  }
+
+  if (user) {
+    return {
+      props: {
+        user: user,
+      },
+    };
   }
   return {
     props: {
