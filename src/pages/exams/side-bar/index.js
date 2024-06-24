@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import styles from "../../../styles/side-bar.module.css";
 import CODLogo from "../../../../public/logo-2.png";
@@ -12,6 +13,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Index() {
+   const router = useRouter()
   const handleLogout = async (e) => {
     try {
       const response = await fetch("/api/logout", {
