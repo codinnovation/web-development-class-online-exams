@@ -1,9 +1,42 @@
 import Head from "next/head";
+import { useEffect } from "react";
 import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import WelcomeScreen from "../pages/welcome-screen";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import usePageVisibility from "./usePageVisibility";
 
 export default function Home() {
+
+  const handleLogout = async (e) => {
+    try {
+      const response = await fetch("/api/logout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        toast.success("Logout successful");
+        router.push("/");
+      } else {
+        toast.error("logout Failed");
+      }
+    } catch (error) {
+      toast.error("Error Occurred");
+    } finally {
+    }
+  };
+
+  const isPageVisible = usePageVisibility(handleLogout);
+
+  useEffect(() => {
+    if (!isPageVisible) {
+      toast.error("This is your last warning for moving to another tab.");
+    }
+  }, [isPageVisible]);
   return (
     <>
       <Head>
@@ -15,6 +48,7 @@ export default function Home() {
       <main>
         <WelcomeScreen />
       </main>
+      <ToastContainer />
     </>
   );
 }
