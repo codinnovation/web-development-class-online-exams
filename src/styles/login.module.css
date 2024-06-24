@@ -1,4 +1,4 @@
-.welcomeContainer {
+.loginContainer {
    position: relative;
    display: flex;
    align-items: center;
@@ -46,12 +46,12 @@
    }
 }
 
-.welcomeMessage {
-   background-color: rgba(255, 255, 255, 0.5);
+.loginFormContainer {
+   background-color: rgba(255, 255, 255, 0.8);
    padding: 20px;
    border-radius: 10px;
    z-index: 1;
-   width: 70%;
+   width: auto;
    height: 45%;
    display: flex;
    justify-content: center;
@@ -59,78 +59,77 @@
    flex-direction: column;
 }
 
-.welcomeHeader {
+.loginContainerHeader {
    display: flex;
    justify-content: center;
    align-items: center;
 }
 
-.welcomeHeader h1 {
-   font-size: 3.5em;
-   margin: 0;
+.loginContainerHeader h1 {
+   color: #00796b;
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 2.2em;
    text-align: center;
-   font-family: Arial, Helvetica, sans-serif;
 }
 
-.welcomeSubHeading {
+.loginFormContainer form {
+   margin-top: 3%;
+}
+
+
+.inputField {
    display: flex;
    justify-content: center;
-   align-items: center;
-   margin-top: 0.9%;
-   font-weight: 100;
+   align-items: flex-start;
+   flex-direction: column;
+   margin-bottom: 20px;
 }
 
-.welcomeSubHeading p {
-   font-size: 1.5em;
-   text-align: center;
-   font-family: Arial, Helvetica, sans-serif;
+.inputField .icon {
+   margin-bottom: 5px;
+   color: #f85a40;
+   font-size: 30px;
 }
 
-
-.welcomeContainerButton {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   margin-top: 5%;
-}
-
-.welcomeContainerButton button {
-   width: 280px;
-   height: 70px;
-   font-size: 1.5em;
-   background-color: #f85a40;
-   font-family: Arial, Helvetica, sans-serif;
+.inputField input {
+   width: 300px;
+   height: 50px;
+   padding-left: 10px;
    border: none;
-   border-radius: 7px;
-   color: #f1f1f1;
-   cursor: pointer;
+   border-radius: 5px;
 }
+
+
+.submitButton {
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+}
+
+.submitButton button {
+   width: 150px;
+   height: 30px;
+   border: none;
+   font-weight: 800;
+}
+
+.submitButton button:nth-child(1) {
+   margin-right: 3%;
+}
+
 
 @media (max-width:700px) {
-   .welcomeMessage {
-      width: 98%;
+   .loginFormContainer {
       height: auto;
    }
 
-   .welcomeHeader h1 {
-      font-size: 1.3em;
+   .loginContainerHeader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
    }
 
-   .welcomeSubHeading {
-      margin-top: 5%;
-   }
-
-   .welcomeSubHeading p {
-      font-size: 1em;
-   }
-
-   .welcomeContainerButton {
-      margin-top: 6%;
-   }
-
-   .welcomeContainerButton button {
-      width: 150px;
-      height: 52px;
-      font-size: 1em;
+   .loginContainerHeader h1 {
+      font-size: 1.6em;
    }
 }

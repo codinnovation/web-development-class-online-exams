@@ -1,9 +1,15 @@
 import React from "react";
+import { useRouter } from "next/router";
 import styles from "../../styles/welcome-screen.module.css";
+import Head from "next/head";
 
 function Index() {
+  const router = useRouter();
   return (
     <>
+      <Head>
+        <title>You are Welcome</title>
+      </Head>
       <div className={styles.welcomeContainer}>
         <div className={`${styles.backgroundImage} ${styles.image1}`}></div>
         <div className={`${styles.backgroundImage} ${styles.image2}`}></div>
@@ -19,7 +25,7 @@ function Index() {
             </p>
           </div>
           <div className={styles.welcomeContainerButton}>
-            <button>Get Started</button>
+            <button onClick={() => router.push("/login")}>Get Started</button>
           </div>
         </div>
       </div>
