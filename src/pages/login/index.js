@@ -7,7 +7,7 @@ import PasswordIcon from "@mui/icons-material/Password";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function index() {
+function Index() {
   const router = useRouter();
 
   const [user, setUser] = useState({
@@ -112,4 +112,4 @@ function index() {
   );
 }
 
-export default index;
+export default Index;
