@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../../styles/exam-page.module.css";
 import MenuIcon from "@mui/icons-material/Menu";
+import withSession from "@/pages/api/session";
+import Head from "next/head";
 
 function Index() {
   const [openMenu, setopenMenu] = useState(false);
   return (
     <>
+      <Head>
+        <title>Welcome to Examination Page</title>
+      </Head>
       <div className={styles.examPgaeContainer}>
         <div className={styles.examPgaeHeader}>
           <div className={styles.headerOne}>
@@ -18,8 +23,8 @@ function Index() {
             <h1>13:00mins</h1>
           </div>
 
-          <div className={styles.menuIcon} onClick={() => setopenMenu(true)}>
-            <MenuIcon />
+          <div className={styles.menuIcon}>
+            <MenuIcon onClick={() => setopenMenu(true)} />
           </div>
         </div>
 
@@ -80,7 +85,9 @@ function Index() {
 
       {openMenu && (
         <>
-          <div className={styles.menuContainer}></div>
+          <div className={styles.menuContainer}>
+            <h1>Asumadu Kwabrna Asima</h1>
+          </div>
         </>
       )}
     </>
@@ -88,3 +95,25 @@ function Index() {
 }
 
 export default Index;
+
+export const getServerSideProps = withSession(async function ({ req, res }) {
+  const user = req.session.get("user");
+  if (!user) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
+  if (user) {
+    req.session.set("user", user);
+    await req.session.save();
+  }
+  return {
+    props: {
+      user: user,
+    },
+  };
+});

@@ -8,8 +8,31 @@ import Book from "@mui/icons-material/Book";
 import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
 import HelpCenter from "@mui/icons-material/HelpCenter";
 import LogoutIcon from "@mui/icons-material/LogoutRounded";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Index() {
+  const handleLogout = async (e) => {
+    try {
+      const response = await fetch("/api/logout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        toast.success("Logout successful");
+        router.push("/");
+      } else {
+        toast.error("logout Failed");
+      }
+    } catch (error) {
+      toast.error("Error Occurred");
+    } finally {
+    }
+  };
+
   return (
     <>
       <div className={styles.sideBarContainer}>
@@ -51,12 +74,13 @@ function Index() {
             </div>
           </div>
 
-          <div className={styles.LogoutContainer}>
+          <div className={styles.LogoutContainer} onClick={handleLogout}>
             <LogoutIcon />
             <h1>Logout</h1>
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 }
