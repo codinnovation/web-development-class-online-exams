@@ -2,11 +2,16 @@ import React from "react";
 import styles from "../../styles/exams.module.css";
 import withSession from "../api/session";
 import SideBar from "./side-bar";
+import Head from "next/head";
 import ExamPage from "./exam-page";
 
 function Index() {
   return (
     <>
+      <Head>
+        <title>Welcome to Examination Page</title>
+        <link rel="icon" href="/logo-2.png" />
+      </Head>
       <div>
         <SideBar />
         <ExamPage />

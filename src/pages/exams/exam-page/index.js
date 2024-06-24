@@ -10,6 +10,7 @@ function Index() {
     <>
       <Head>
         <title>Welcome to Examination Page</title>
+        <link rel="icon" href="/logo-2.png" />
       </Head>
       <div className={styles.examPgaeContainer}>
         <div className={styles.examPgaeHeader}>

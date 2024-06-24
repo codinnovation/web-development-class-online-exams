@@ -68,6 +68,7 @@ function Index() {
     <>
       <Head>
         <title>Please Login Into Your Account</title>
+        <link rel="icon" href="/logo-2.png" />
       </Head>
       <div className={styles.loginContainer}>
         <div className={`${styles.backgroundImage} ${styles.image1}`}></div>

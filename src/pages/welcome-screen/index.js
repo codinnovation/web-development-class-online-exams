@@ -9,6 +9,7 @@ function Index() {
     <>
       <Head>
         <title>You are Welcome</title>
+        <link rel="icon" href="/logo-2.png" />
       </Head>
       <div className={styles.welcomeContainer}>
         <div className={`${styles.backgroundImage} ${styles.image1}`}></div>
