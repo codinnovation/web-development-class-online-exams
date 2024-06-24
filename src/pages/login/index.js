@@ -1,10 +1,17 @@
 import React from "react";
+import { useRouter } from "next/router";
 import Head from "next/head";
 import styles from "../../styles/login.module.css";
 import EmailIcon from "@mui/icons-material/Email";
 import PasswordIcon from "@mui/icons-material/Password";
 
 function index() {
+  const router = useRouter();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    router.push("/exams");
+  };
   return (
     <>
       <Head>
@@ -18,7 +25,7 @@ function index() {
           <div className={styles.loginContainerHeader}>
             <h1>Login Into Your Account</h1>
           </div>
-          <form>
+          <form onSubmit={handleLogin}>
             <div className={styles.inputField}>
               <EmailIcon className={styles.icon} />
               <input type="email" placeholder="Enter your email" />

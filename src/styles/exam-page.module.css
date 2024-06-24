@@ -1,0 +1,226 @@
+.examPgaeContainer {
+   width: 95%;
+   margin: 0 auto;
+}
+
+.examPgaeHeader {
+   margin-left: 20%;
+   padding-top: 2%;
+   display: grid;
+   grid-template-columns: 1fr auto;
+}
+
+.headerOne {
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+}
+
+.headerOne h1 {
+   font-size: 1.6em;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+.headerOne h1:nth-child(1) {
+   margin-right: 10px;
+}
+
+.headerTwo {
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+}
+
+.headerTwo h1 {
+   font-size: 1.6em;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+.headerTwo h1:nth-child(1) {
+   margin-right: 10px;
+   color: #f85a40;
+}
+
+.menuIcon {
+   display: none;
+}
+
+.instructionsHeader {
+   margin-left: 20%;
+   margin-top: 4%;
+}
+
+.instructionsHeader h1:nth-child(1) {
+   text-transform: uppercase;
+   color: #f85a40;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+.instructionsHeader h1:nth-child(2) {
+   color: #00796b;
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 1.6em;
+   margin-top: 10px;
+}
+
+.examsQuestions {
+   margin-left: 20%;
+   margin-top: 1%;
+   background-color: #f1f1f1;
+   padding: 10px;
+}
+
+.questionContainer {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   margin-bottom: 5%;
+}
+
+.question p {
+   font-size: 1.3em;
+   color: #f85a40;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+.question h1 {
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 1.5em;
+   margin-top: 10px;
+}
+
+.answers {
+   margin-top: 3%;
+}
+
+.answers p {
+   font-size: 1.3em;
+   color: #f85a40;
+   font-family: Arial, Helvetica, sans-serif;
+   margin-bottom: 10px;
+}
+
+.answers select {
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 1.5em;
+   margin-top: 10px;
+   width: 300px;
+   height: 60px;
+}
+
+.actionButtons {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-left: 20%;
+   margin-top: 1%;
+   margin-bottom: 1%
+}
+
+.actionButtons button {
+   width: 100px;
+   height: 50px;
+   margin-right: 10px;
+}
+
+@media (max-width:700px) {
+   .examPgaeContainer {
+      width: 96%;
+      height: 100vh;
+   }
+
+   .examPgaeHeader {
+      margin-left: 0%;
+      padding-top: 2%;
+      display: grid;
+      grid-template-columns: 1fr auto;
+   }
+
+   .headerOne h1 {
+      font-size: 0.9em;
+      font-family: Arial, Helvetica, sans-serif;
+   }
+
+   .headerOne {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+   }
+
+   .headerTwo h1 {
+      font-size: 0.9em;
+      font-family: Arial, Helvetica, sans-serif;
+   }
+
+   .headerTwo {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+   }
+
+   .menuIcon {
+      display: block;
+      margin-top: 10px;
+   }
+
+   .instructionsHeader {
+      margin-left: 0%;
+      margin-top: 5%;
+   }
+
+   .instructionsHeader h1:nth-child(1) {
+      font-size: 1em;
+      text-align: center;
+   }
+
+   .instructionsHeader h1:nth-child(2) {
+      color: #00796b;
+      font-size: 0.9em;
+   }
+
+   .examsQuestions {
+      margin-left: 0%;
+      margin-top: 8%;
+   }
+
+   .question p {
+      font-size: 1em;
+   }
+
+   .question h1 {
+      font-size: 1.1em;
+   }
+
+   .answers p {
+      font-size: 1.1em;
+   }
+
+   .answers select {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1em;
+      margin-top: 10px;
+      width: auto;
+      height: 40px;
+   }
+
+   .actionButtons {
+      margin-left: 00%;
+      margin-top: 6%;
+   }
+
+   .actionButtons button {
+      width: 100px;
+      height: 40px;
+      margin-bottom: 0%
+   }
+
+   .menuContainer {
+      height: 100vh;
+      background-color: #00796b;
+      position: fixed;
+      z-index: 900;
+      width: 25%;
+   }
+
+}

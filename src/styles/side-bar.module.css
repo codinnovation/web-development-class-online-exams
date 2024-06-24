@@ -1,0 +1,78 @@
+.sideBarContainer {
+   background-color: #00796b;
+   width: 20%;
+   height: 100vh;
+   position: fixed;
+}
+
+.sideBarContent {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-direction: column;
+   height: 100%;
+}
+
+.logoContainer {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   margin-top: 7%;
+}
+
+.logoContainer .image {
+   width: 80%;
+   height: auto;
+}
+
+.sideBarLinks {
+   width: 80%;
+   margin-top: 25%;
+}
+
+.sideBarLinks .link {
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   margin-bottom: 25%;
+}
+
+.sideBarLinks .link .icon {
+   font-size: 1.5em;
+   color: #eeee;
+}
+
+.sideBarLinks .link .h1 {
+   font-size: 1.5em;
+   text-decoration: none;
+   margin-left: 3px;
+   color: #eeee;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+.LogoutContainer {
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   color: #f85a40;
+   margin-bottom: 3%;
+   width: 80%;
+}
+
+.LogoutContainer h1 {
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 1.5em;
+}
+
+
+@media (max-width:700px) {
+   .sideBarContainer {
+      display: none;
+   }
+
+
+
+
+
+}
