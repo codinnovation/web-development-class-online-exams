@@ -10,7 +10,7 @@ import usePageVisibility from "@/pages/usePageVisibility";
 import { db } from "../../../../firebase.config";
 import { ref, get, set, push } from "firebase/database";
 
-function Index({  }) {
+function Index({}) {
   const [openMenu, setopenMenu] = useState(false);
   const [examsQuestions, setExamsQuestions] = useState([]);
   const [selectedAnswers, setSelectedAnswers] = useState({});
@@ -18,27 +18,42 @@ function Index({  }) {
   const questionsPerPage = 2;
   const router = useRouter();
   const [user, setUser] = useState(null);
-
+  const [timeLeft, setTimeLeft] = useState(600); // 10 mins in seconds
 
   useEffect(() => {
-   const fetchUser = async () => {
-     try {
-       const res = await fetch("/api/user");
-       if (res.ok) {
-         const data = await res.json();
-         setUser(data.user);
-       } else {
-         setUser(null);
-       }
-     } catch (error) {
-       console.error("Error fetching user data:", error);
-       setUser(null);
-     } finally {
-     }
-   };
+    const fetchUser = async () => {
+      try {
+        const res = await fetch("/api/user");
+        if (res.ok) {
+          const data = await res.json();
+          setUser(data.user);
+        } else {
+          setUser(null);
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+        setUser(null);
+      } finally {
+      }
+    };
 
-   fetchUser();
- }, []);
+    fetchUser();
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft((prevTime) => {
+        if (prevTime <= 1) {
+          clearInterval(timer);
+          handleSubmit();
+          return 0;
+        }
+        return prevTime - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   const handleLogout = async () => {
     try {
@@ -151,6 +166,11 @@ function Index({  }) {
   const endIndex = startIndex + questionsPerPage;
   const currentQuestions = examsQuestions.slice(startIndex, endIndex);
 
+  const formateTime = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+  };
   return (
     <>
       <Head>
@@ -166,7 +186,7 @@ function Index({  }) {
 
           <div className={styles.headerTwo}>
             <h1>Time Left: </h1>
-            <h1>13:00mins</h1>
+            <h1>{formateTime(timeLeft)}mins</h1>
           </div>
 
           <div className={styles.menuIcon}>
@@ -177,7 +197,7 @@ function Index({  }) {
         <div className={styles.instructionsHeader}>
           <h1>Instructions:</h1>
           <h1>
-            The exam will last for 20 minutes, and you will need to answer all
+            The exam will last for 10 minutes, and you will need to answer all
             questions within that time frame. You will not be allowed to
             navigate to another tab or window during the exam. Please stay on
             this page until you have completed all questions
