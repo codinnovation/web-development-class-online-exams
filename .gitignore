@@ -36,5 +36,5 @@ yarn-error.log*
 next-env.d.ts
 
 
-#Ignore the add question to db
+#Ignore the add question to db from
 /pages/add-question-db.js
