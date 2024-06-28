@@ -5,7 +5,6 @@ import styles from "@/styles/Home.module.css";
 import WelcomeScreen from "../pages/welcome-screen";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import usePageVisibility from "./usePageVisibility";
 
 export default function Home() {
 
@@ -30,13 +29,7 @@ export default function Home() {
     }
   };
 
-  const isPageVisible = usePageVisibility(handleLogout);
 
-  useEffect(() => {
-    if (!isPageVisible) {
-      toast.error("This is your last warning for moving to another tab.");
-    }
-  }, [isPageVisible]);
   return (
     <>
       <Head>
