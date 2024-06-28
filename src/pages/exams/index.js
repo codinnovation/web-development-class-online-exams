@@ -13,7 +13,6 @@ function Index() {
         <link rel="icon" href="/logo-2.png" />
       </Head>
       <div>
-        <SideBar />
         <ExamPage />
       </div>
     </>

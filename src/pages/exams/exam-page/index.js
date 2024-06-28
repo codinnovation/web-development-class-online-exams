@@ -153,7 +153,7 @@ function Index({}) {
       toast.success("Exam submitted successfully!");
 
       router.push({
-        pathname: "/exam-score",
+        pathname: "exams/exam-score",
         query: { score, total },
       });
     } catch (error) {

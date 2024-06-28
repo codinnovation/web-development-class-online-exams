@@ -12,7 +12,7 @@ import LogoutIcon from "@mui/icons-material/LogoutRounded";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function Index() {
+function Index({children}) {
    const router = useRouter()
   const handleLogout = async (e) => {
     try {
@@ -62,7 +62,7 @@ function Index() {
 
               <div className={styles.link}>
                 <Book className={styles.icon} />
-                <Link href="/" className={styles.h1}>
+                <Link href="/exams/user-score/" className={styles.h1}>
                   Results
                 </Link>
               </div>
@@ -83,6 +83,7 @@ function Index() {
         </div>
       </div>
       <ToastContainer />
+      {children}
     </>
   );
 }
