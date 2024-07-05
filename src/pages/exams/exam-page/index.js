@@ -10,7 +10,7 @@ import usePageVisibility from "@/pages/usePageVisibility";
 import { db } from "../../../../firebase.config";
 import { ref, get, set, push } from "firebase/database";
 
-function Index({}) {
+function Index() {
   const [openMenu, setopenMenu] = useState(false);
   const [examsQuestions, setExamsQuestions] = useState([]);
   const [selectedAnswers, setSelectedAnswers] = useState({});
@@ -53,7 +53,7 @@ function Index({}) {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  });
 
   const handleLogout = async () => {
     try {
